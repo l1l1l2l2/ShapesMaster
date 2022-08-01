@@ -12,7 +12,7 @@ namespace ShapesMaster
         public double Radius
         {
             get => _radius;
-            set
+            private set
             {
                 if (value <= 0)
                     throw new ArgumentException("Radius must be greater than 0.");
