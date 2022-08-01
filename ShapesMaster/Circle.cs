@@ -8,9 +8,24 @@ namespace ShapesMaster
 {
     internal class Circle : IShape
     {
-        public decimal GetArea()
+        private double _radius;
+        public double Radius
         {
-            throw new NotImplementedException();
+            get => _radius;
+            set
+            {
+                if (value >= 0)
+                    _radius = value;
+                throw new ArgumentException("Radius must be greater than 0.");
+            }
+        }
+        public double Area
+        {
+            get => Math.PI * Math.Pow((double)Radius, 2);
+        }
+        public Circle(double radius)
+        {
+            Radius = radius;
         }
     }
 }

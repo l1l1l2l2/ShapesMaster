@@ -8,6 +8,6 @@ namespace ShapesMaster
 {
     public interface IShape
     {
-        public decimal GetArea();
+        public double Area { get; }
     }
 }
