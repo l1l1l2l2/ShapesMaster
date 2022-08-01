@@ -20,8 +20,7 @@ namespace ShapesMaster
                     
             }
         }
-        private double? _area;
-        public double Area => _area ??= Math.PI * Math.Pow((double)Radius, 2);
+        public double Area => Math.PI * Math.Pow((double)Radius, 2);
         public Circle(double radius)
         {
             Radius = radius;

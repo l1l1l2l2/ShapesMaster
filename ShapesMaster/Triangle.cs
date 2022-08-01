@@ -5,31 +5,23 @@
         public double A { get; init; }
         public double B { get; init; }
         public double C { get; init; }
-        private double? _perimeter;
-        private double? _semiPerimeter;
-        private double? _area;
-        private bool? _isRight;
-
-        public double SemiPerimeter => _semiPerimeter ??= Perimeter / 2;
-        public double Perimeter => _perimeter ??= A + B + C;
-        public double Area => _area ??=
-            Math.Sqrt(SemiPerimeter *
+        public double SemiPerimeter => Perimeter / 2;
+        public double Perimeter => A + B + C;
+        public double Area => Math.Sqrt(SemiPerimeter *
             (SemiPerimeter - A) *
             (SemiPerimeter - B) *
             (SemiPerimeter - C));
-
-        public bool IsRight
-        {
+        public bool IsRight 
+        { 
             get
             {
-                if(_isRight is not null)
-                    return _isRight.Value;
-                double aSqr = Math.Pow(A, 2), 
-                    bSqr = Math.Pow(B, 2), 
-                    cSqr = Math.Pow(C, 2);
+                double aSqr = Math.Pow(A, 2),
+                   bSqr = Math.Pow(B, 2),
+                   cSqr = Math.Pow(C, 2);
                 return aSqr == bSqr + cSqr || bSqr == aSqr + cSqr || cSqr == aSqr + bSqr;
             }
         }
+       
         public Triangle(double a, double b, double c)
         {
             if (a < 0 || b < 0 || c < 0)
