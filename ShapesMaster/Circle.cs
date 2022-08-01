@@ -19,10 +19,8 @@ namespace ShapesMaster
                 throw new ArgumentException("Radius must be greater than 0.");
             }
         }
-        public double Area
-        {
-            get => Math.PI * Math.Pow((double)Radius, 2);
-        }
+        private double? _area;
+        public double Area => _area ??= Math.PI * Math.Pow((double)Radius, 2);
         public Circle(double radius)
         {
             Radius = radius;
