@@ -19,11 +19,28 @@ namespace ShapesMaster.Tests
             Assert.Throws<ArgumentException>(() => new Triangle(a, b, c));
         }
         [Theory]
-        [InlineData(3, 5, 6, 7.483314773547983)]
-
+        [InlineData(3, 4, 5, 6)]
+        [InlineData(3, 5, 6, 7.483314773547883)]
+        [InlineData(2, 3, 4, 2.9047375096555625)]
+        [InlineData(12345.1f, 10230.5f, 12312.3f, 57379736.43139169)]
         public void AreaCorrect(double a, double b, double c, double expect)
         {
             Assert.Equal(expect, new Triangle(a, b, c).Area);
+        }
+        [Theory]
+        [InlineData(3, 4, 5)]
+        [InlineData(6, 8, 10)]
+        public void IsRightCorrectTrue(double a, double b, double c)
+        {
+            Assert.True(new Triangle(a, b, c).IsRight);
+        }
+        [Theory]
+        [InlineData(3, 7, 5)]
+        [InlineData(10, 11, 12)]
+        [InlineData(13.3, 15.3, 18.5)]
+        public void IsRightCorrectFalse(double a, double b, double c)
+        {
+            Assert.False(new Triangle(a, b, c).IsRight);
         }
     }
 }
