@@ -6,14 +6,17 @@
         public double B { get; init; }
         public double C { get; init; }
         private double? _perimeter;
+        private double? _semiPerimeter;
         private double? _area;
         private bool? _isRight;
+
+        public double SemiPerimeter => _semiPerimeter ??= Perimeter / 2;
         public double Perimeter => _perimeter ??= A + B + C;
         public double Area => _area ??=
-            Math.Sqrt(Perimeter *
-            (Perimeter - A) *
-            (Perimeter - B) *
-            (Perimeter - C));
+            Math.Sqrt(SemiPerimeter *
+            (SemiPerimeter - A) *
+            (SemiPerimeter - B) *
+            (SemiPerimeter - C));
 
         public bool IsRight
         {
